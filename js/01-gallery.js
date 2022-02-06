@@ -28,7 +28,7 @@ function onGalleryClick(sample) {
 
    sample.preventDefault();
 
-   const isGalleryImageLi = sample.target.classLiist.contains('gallery__image')
+   const isGalleryImageLi = sample.target.classList.contains('gallery__image');
    if (!isGalleryImageLi) {
       return;
    };
