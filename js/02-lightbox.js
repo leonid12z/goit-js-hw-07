@@ -18,6 +18,7 @@ function elementGalleryMarkup(items) {
    }).join('');
 };
 
+
 function onGalleryClick(sample) {
 
    sample.preventDefault();
