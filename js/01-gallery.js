@@ -11,13 +11,14 @@ galleryContainer.addEventListener('click', onGalleryClick);
 
 function elementGalleryMarkup(items) {
    return galleryItems.map(({ preview, original, description }) => {
-      return `<div class="gallery__item">
-  <a class="gallery__link" href="${original}">
+
+      return `<div class = "gallery__item">
+  <a class = "gallery__link" href = "${original}">
     <img
-      class="gallery__image"
-      src="${preview}"
-      data-source="${original}"
-      alt="${description}"
+      class = "gallery__image"
+      src = "${preview}"
+      data-source = "${original}"
+      alt = "${description}"
     />
   </a>
 </div>`
@@ -28,18 +29,20 @@ function onGalleryClick(sample) {
 
    sample.preventDefault();
 
-   const isGalleryImageLi = sample.target.classList.contains('gallery__image');
-   if (!isGalleryImageLi) {
+   if (sample.target.nodeName !== 'IMG') {
       return;
    };
 
-   const instance = basicLightbox.create(`<img src="assets/images/image.png" width="800" height="600">`, {
+   const instance = basicLightbox.create(`<img src = "assets/images/image.png" width = "800" height = "600">`, {
    
       onShow: instance => {
          ('onShow', instance);
          window.addEventListener('keydown', onSamplePress);
       },
-      onClose: instance => ('onClose', instance),
+      onClose: instance => {
+         window.removeEventListener('onClose', instance)
+      }
+
    });  
 
    function onSamplePress(event) {
